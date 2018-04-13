@@ -5,6 +5,16 @@
              xmlns:checkbox="clr-namespace:XCheckBox;assembly=XCheckBox"
              x:Class="XCheckBox.Sample.MainPage">
 
-    <checkbox:XCheckBox HorizontalOptions="Center" VerticalOptions="Center" CheckBoxColor="Beige"/>
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+        <checkbox:XCheckBox CheckBoxColor="Beige"
+                        CheckBoxValue="{Binding CheckBoxValue}"/>
+
+        <Label Text="{Binding CheckBoxValue}"/>
+    </StackLayout>
+        
+        
+
+    
+    
 
 </ContentPage>
