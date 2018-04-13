@@ -25,8 +25,9 @@ namespace XCheckBox
                 nameof(CheckBoxValue),
                 typeof(bool),
                 typeof(XCheckBox),
-                false);
-                                        
+                false,
+                BindingMode.TwoWay);                                        
+
         public ICommand CommandChecked
         {
             get => (ICommand)GetValue(CommandCheckedProperty);
@@ -52,6 +53,6 @@ namespace XCheckBox
             CheckBoxValue = value;
             CommandChecked?.Execute(value);
             EventHandlerCheckedValue?.Invoke(this, value);            
-        }        
+        }
     }
 }
