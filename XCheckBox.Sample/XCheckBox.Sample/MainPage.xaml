@@ -6,10 +6,12 @@
              x:Class="XCheckBox.Sample.MainPage">
 
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
-        <checkbox:XCheckBox CheckBoxColor="Beige"
+        <checkbox:XCheckBox CheckBoxColor="Red"
                         CheckBoxValue="{Binding CheckBoxValue}"/>
 
         <Label Text="{Binding CheckBoxValue}"/>
+
+        <Button Command="{Binding CheckBoxForAnotherPlaceCommand}" Text="Change value"/>
     </StackLayout>
         
         

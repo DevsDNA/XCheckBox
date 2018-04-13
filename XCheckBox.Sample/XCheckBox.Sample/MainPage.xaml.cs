@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace XCheckBox.Sample
 {
@@ -7,11 +9,11 @@ namespace XCheckBox.Sample
 		public MainPage()
 		{
 			InitializeComponent();
-            BindingContext = this;
+            BindingContext = this;            
 		}
-
+        
         private bool checkBoxValue;
-
+        
         public bool CheckBoxValue
         {
             get => checkBoxValue;
@@ -20,6 +22,13 @@ namespace XCheckBox.Sample
                 checkBoxValue = value;
                 OnPropertyChanged(nameof(CheckBoxValue));
             }
+        }
+
+        public ICommand CheckBoxForAnotherPlaceCommand => new Command(PerformCheckBoxForAnotherPlace);
+
+        private void PerformCheckBoxForAnotherPlace()
+        {
+            CheckBoxValue = !CheckBoxValue;
         }
 
     }
