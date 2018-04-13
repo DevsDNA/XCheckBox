@@ -15,6 +15,7 @@ namespace XCheckBox.iOS
         private double height = 20;
 
         private XCheckBox element;
+        private BemCheckBox.BemCheckBox control;
 
         public new static void Init()
         {
@@ -24,11 +25,11 @@ namespace XCheckBox.iOS
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
             element = (XCheckBox)Element;
-            var checkBoxControl = new BemCheckBox.BemCheckBox(new CGRect(0, 0, width, height), new MyBemCheckBoxDelegate((checkedValue) =>
+            control = new BemCheckBox.BemCheckBox(new CGRect(0, 0, width, height), new MyBemCheckBoxDelegate((checkedValue) =>
             {
                 element.RaiseChecked(checkedValue);
             }));
-            SetNativeControl(checkBoxControl);
+            SetNativeControl(control);
 
             if (Control == null)
                 return;
@@ -58,6 +59,11 @@ namespace XCheckBox.iOS
             if(e.PropertyName == XCheckBox.CheckBoxColorProperty.PropertyName)
             {
                 ChangeCheckBoxColors();
+            }
+
+            if(e.PropertyName == XCheckBox.CheckBoxValueProperty.PropertyName)
+            {
+                control.On = element.CheckBoxValue;
             }
         }
 

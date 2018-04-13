@@ -26,8 +26,9 @@ namespace XCheckBox
                 typeof(bool),
                 typeof(XCheckBox),
                 false,
-                BindingMode.TwoWay);                                        
-
+                BindingMode.TwoWay);
+                
+        
         public ICommand CommandChecked
         {
             get => (ICommand)GetValue(CommandCheckedProperty);
@@ -48,11 +49,11 @@ namespace XCheckBox
 
         public event EventHandler<bool> EventHandlerCheckedValue;
 
-        public void RaiseChecked(bool value)
+        public void RaiseChecked(bool value) 
         {
             CheckBoxValue = value;
             CommandChecked?.Execute(value);
             EventHandlerCheckedValue?.Invoke(this, value);            
-        }
+        }        
     }
 }

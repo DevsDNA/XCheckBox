@@ -19,6 +19,7 @@ namespace XCheckBox.Droid
             var date = DateTime.Now;            
         }
 
+        private CheckBox control;
         private XCheckBox element;
 
         public CheckBoxRenderer(Context context) : base(context)
@@ -27,7 +28,7 @@ namespace XCheckBox.Droid
 
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
-            var control = new Android.Widget.CheckBox(Context);
+            control = new Android.Widget.CheckBox(Context);
             SetNativeControl(control);
 
             if (Element == null)
@@ -45,9 +46,17 @@ namespace XCheckBox.Droid
         {
             base.OnElementPropertyChanged(sender, e);
 
+            if (Control == null)
+                return;
+
             if(e.PropertyName == XCheckBox.CheckBoxColorProperty.PropertyName)
             {
                 ChangeCheckBoxColor();
+            }
+
+            if(e.PropertyName == XCheckBox.CheckBoxValueProperty.PropertyName)
+            {
+                control.Checked = element.CheckBoxValue;   
             }
         }
 
